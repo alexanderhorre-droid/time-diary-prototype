@@ -1,0 +1,20 @@
+<!-- @dsCard group="Actions" height=300 subtitle="Primary, secondary, ghost, and not-available-yet" -->
+<div style="padding:16px;display:grid;gap:16px;max-width:420px">
+  <div style="display:flex;flex-wrap:wrap;gap:8px">
+    <button class="td-btn td-btn--primary" type="button">Add to timeline</button>
+    <button class="td-btn td-btn--secondary" type="button">Save and add another</button>
+    <button class="td-btn td-btn--ghost" type="button">Cancel</button>
+  </div>
+  <div style="display:grid;gap:8px">
+    <button class="td-btn td-btn--secondary" type="button" aria-disabled="true" aria-describedby="why" id="submit">
+      <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+      Submit
+    </button>
+    <p id="why" class="td-hint" role="status" aria-live="polite">Tap Submit to see what's left.</p>
+  </div>
+</div>
+<script>
+  document.getElementById('submit').addEventListener('click', function () {
+    document.getElementById('why').textContent = "You haven't added activities for 3 days yet: Mon 19, Tue 20 and Thu 22 Oct.";
+  });
+</script>

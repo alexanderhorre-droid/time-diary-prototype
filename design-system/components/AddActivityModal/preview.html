@@ -1,0 +1,49 @@
+<!-- @dsCard group="Add activity" height=980 subtitle="Step 2 assembled: option, time, repeat, actions" -->
+<div style="padding:16px;max-width:480px">
+  <div class="td-modal td-modal--inline" role="dialog" aria-modal="false" aria-labelledby="m-title" style="border:1px solid var(--line)">
+    <div class="td-modal__head">
+      <button class="td-icon-btn" type="button" aria-label="Back to activities">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <h2 id="m-title"><span class="td-modal__step">Step 2 of 2</span>Add activity</h2>
+      <button class="td-icon-btn" type="button" aria-label="Close">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="td-modal__body">
+      <fieldset class="td-options">
+        <legend>Select an option for "Travelling"</legend>
+        <label class="td-option"><input type="radio" name="o" checked> Travelling: walking</label>
+        <label class="td-option"><input type="radio" name="o"> Travelling: cycle</label>
+        <label class="td-option"><input type="radio" name="o"> Travelling: public transport</label>
+        <label class="td-option"><input type="radio" name="o"> Travelling: other</label>
+      </fieldset>
+      <fieldset class="td-time-range">
+        <legend>When?</legend>
+        <div class="td-field"><label for="d2">Day</label><select class="td-select td-select--text" id="d2"><option>Tue 20 Oct</option></select></div>
+        <div class="td-time-range__row">
+          <div class="td-field"><label for="s2">Start</label><select class="td-select" id="s2"><option>08:00</option></select></div>
+          <div class="td-field"><label for="e2">End</label><select class="td-select" id="e2"><option>08:30</option></select></div>
+        </div>
+        <p class="td-duration">0 h 30 min</p>
+      </fieldset>
+      <fieldset class="td-days">
+        <legend>Also on other days?</legend>
+        <p class="td-hint">Same activity and time.</p>
+        <div class="td-days__grid">
+          <label class="td-day-chip"><input type="checkbox" aria-label="Mon 19 Oct"><span class="td-day-chip__wd" aria-hidden="true">Mon</span><span class="td-day-chip__d" aria-hidden="true">19</span></label>
+          <label class="td-day-chip td-day-chip--current"><input type="checkbox" checked aria-label="Tue 20 Oct, this activity"><span class="td-day-chip__wd" aria-hidden="true">Tue</span><span class="td-day-chip__d" aria-hidden="true">20</span></label>
+          <label class="td-day-chip"><input type="checkbox" checked aria-label="Wed 21 Oct"><span class="td-day-chip__wd" aria-hidden="true">Wed</span><span class="td-day-chip__d" aria-hidden="true">21</span></label>
+          <label class="td-day-chip"><input type="checkbox" aria-label="Thu 22 Oct"><span class="td-day-chip__wd" aria-hidden="true">Thu</span><span class="td-day-chip__d" aria-hidden="true">22</span></label>
+          <label class="td-day-chip"><input type="checkbox" aria-label="Fri 23 Oct"><span class="td-day-chip__wd" aria-hidden="true">Fri</span><span class="td-day-chip__d" aria-hidden="true">23</span></label>
+          <label class="td-day-chip"><input type="checkbox" aria-label="Sat 24 Oct"><span class="td-day-chip__wd" aria-hidden="true">Sat</span><span class="td-day-chip__d" aria-hidden="true">24</span></label>
+          <label class="td-day-chip"><input type="checkbox" aria-label="Sun 25 Oct"><span class="td-day-chip__wd" aria-hidden="true">Sun</span><span class="td-day-chip__d" aria-hidden="true">25</span></label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="td-modal__foot">
+      <button class="td-btn td-btn--primary td-btn--block" type="button">Add to timeline</button>
+      <button class="td-btn td-btn--secondary td-btn--block" type="button">Save and add another</button>
+    </div>
+  </div>
+</div>

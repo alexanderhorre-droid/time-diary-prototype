@@ -1,0 +1,75 @@
+<!-- @dsCard group="Submit" height=1040 width=390 subtitle="Check every day, then Submit diary opens a second step to confirm. A real form; no script." -->
+<div style="width:390px;max-width:100%;height:660px;overflow-y:auto;border:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column">
+  <header class="td-modal__head">
+    <a class="td-icon-btn" href="#timeline" aria-label="Back to your diary">
+      <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </a>
+    <span style="flex:1"></span>
+  </header>
+
+  <!-- In the app: <form method="post" action="/diary/submit">. The onsubmit below only stops this preview from navigating. -->
+  <form method="post" action="/diary/submit" onsubmit="event.preventDefault()" style="flex:1;display:flex;flex-direction:column">
+  <main style="flex:1">
+    <div class="td-page-head">
+      <h1>Check your diary</h1>
+      <p>19 Oct – 1 Nov · 14 days</p>
+    </div>
+
+    <div class="td-review">
+      <section class="td-review__day" aria-labelledby="r-19">
+        <div class="td-review__head">
+          <h2 id="r-19">Mon 19 Oct</h2>
+          <a class="td-review__edit" href="#day-2026-10-19">Edit<span class="td-vh"> Mon 19 Oct</span></a>
+        </div>
+        <ol>
+          <li><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-review__time">07:00 – 07:45</span><span class="td-review__what">Activities of Daily Living</span></li>
+          <li><span class="td-pat td-pat--sm td-pat--travel" aria-hidden="true"></span><span class="td-review__time">07:45 – 08:15</span><span class="td-review__what">Travelling: cycle</span></li>
+          <li><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-review__time">20:00 – 20:45</span><span class="td-review__what">Activities of Daily Living</span></li>
+          <li><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-review__time">20:30 – 21:30</span><span class="td-review__what">Resting</span></li>
+          <li><span class="td-pat td-pat--sm td-pat--other" aria-hidden="true"></span><span class="td-review__time">21:30 – 22:30</span><span class="td-review__what">Other Activity<small>Piano practice</small></span></li>
+          <li><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-review__time">22:30 – 07:00 <small>+1</small><span class="td-vh"> next day</span></span><span class="td-review__what">Sleeping</span></li>
+        </ol>
+      </section>
+
+      <section class="td-review__day" aria-labelledby="r-20">
+        <div class="td-review__head">
+          <h2 id="r-20">Tue 20 Oct</h2>
+          <a class="td-review__edit" href="#day-2026-10-20">Edit<span class="td-vh"> Tue 20 Oct</span></a>
+        </div>
+        <ol>
+          <li><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-review__time">07:00 – 07:30</span><span class="td-review__what">Activities of Daily Living</span></li>
+          <li><span class="td-pat td-pat--sm td-pat--travel" aria-hidden="true"></span><span class="td-review__time">07:30 – 08:00</span><span class="td-review__what">Travelling: public transport</span></li>
+          <li><span class="td-pat td-pat--sm td-pat--other" aria-hidden="true"></span><span class="td-review__time">12:00 – 13:00</span><span class="td-review__what">Forgot / Unspecified</span></li>
+        </ol>
+      </section>
+    </div>
+    <p class="td-review__more" aria-hidden="true">… 12 more days</p>
+  </main>
+
+  <footer class="td-sticky-foot">
+    <button class="td-btn td-btn--primary td-btn--block" type="button" popovertarget="confirm-submit">Submit diary</button>
+    <p>You'll confirm on the next step before anything is sent.</p>
+  </footer>
+
+  <div popover id="confirm-submit" class="td-popover td-popover--sheet" role="dialog" aria-labelledby="cs-title" aria-describedby="cs-text">
+    <h2 id="cs-title">Submit your diary?</h2>
+    <p id="cs-text">This sends 14 days, 19 Oct – 1 Nov, to the research team. After that you can look at it, but not change it.</p>
+    <div class="td-popover__stack">
+      <button class="td-btn td-btn--primary td-btn--block" type="submit">Yes, submit</button>
+      <button class="td-btn td-btn--secondary td-btn--block" type="button" popovertarget="confirm-submit" popovertargetaction="hide" autofocus>Not yet, keep checking</button>
+    </div>
+  </div>
+  </form>
+</div>
+
+<p class="td-hint" style="width:390px;max-width:100%;margin:24px 0 8px">The second step, as it appears after tapping Submit diary:</p>
+<div style="width:390px;max-width:100%;padding:16px;background:var(--overlay)">
+  <div class="td-popover td-popover--sheet td-popover--inline" role="note">
+    <h2>Submit your diary?</h2>
+    <p>This sends 14 days, 19 Oct – 1 Nov, to the research team. After that you can look at it, but not change it.</p>
+    <div class="td-popover__stack">
+      <span class="td-btn td-btn--primary td-btn--block">Yes, submit</span>
+      <span class="td-btn td-btn--secondary td-btn--block">Not yet, keep checking</span>
+    </div>
+  </div>
+</div>

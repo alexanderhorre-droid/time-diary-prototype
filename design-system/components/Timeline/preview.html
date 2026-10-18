@@ -1,0 +1,84 @@
+<!-- @dsCard group="Timeline screen" height=640 width=390 subtitle="Scroll: Mon evening runs into Tue morning. Sleep crosses midnight, two activities overlap, gaps are tappable." -->
+<div style="width:390px;max-width:100%;height:600px;overflow-y:auto;position:relative;border:1px solid var(--line);background:var(--bg)">
+  <div class="td-timeline">
+
+    <section class="td-tl-day" id="day-2026-10-19" aria-labelledby="h-19">
+      <h2 class="td-tl-day__head" id="h-19">Mon 19 Oct</h2>
+      <div class="td-tl-grid" style="--from:80">
+        <ol class="td-tl-hours" aria-hidden="true">
+          <li><time>20:00</time></li><li><time>21:00</time></li><li><time>22:00</time></li><li><time>23:00</time></li>
+        </ol>
+        <ol class="td-tl-track" aria-label="Activities on Mon 19 Oct">
+          <li class="td-event td-event--short" style="--start:80;--dur:3;--lane:0;--lanes:2">
+            <button class="td-event__btn" type="button">
+              <span class="td-event__top"><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-event__title">Activities of Daily Living</span></span>
+              <span class="td-vh">20:00 – 20:45</span>
+            </button>
+          </li>
+          <li class="td-event" style="--start:82;--dur:4;--lane:1;--lanes:2">
+            <button class="td-event__btn" type="button">
+              <span class="td-event__top"><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-event__title">Resting</span></span>
+              <span class="td-event__time">20:30 – 21:30</span>
+            </button>
+          </li>
+          <li class="td-gap" style="--start:86;--dur:4">
+            <button class="td-gap__btn" type="button">
+              <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Nothing added · 21:30 – 22:30
+            </button>
+          </li>
+          <li class="td-event td-event--cont-after" style="--start:90;--dur:6">
+            <button class="td-event__btn" type="button">
+              <span class="td-event__top"><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-event__title">Sleeping</span></span>
+              <span class="td-event__time">22:30 – 07:00 <span aria-hidden="true">↓</span><span class="td-vh">, ends Tue 20 Oct</span></span>
+            </button>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="td-tl-day" id="day-2026-10-20" aria-labelledby="h-20">
+      <h2 class="td-tl-day__head" id="h-20">Tue 20 Oct</h2>
+      <div class="td-tl-grid" style="--from:0">
+        <ol class="td-tl-hours" aria-hidden="true">
+          <li><time>00:00</time></li><li><time>01:00</time></li><li><time>02:00</time></li><li><time>03:00</time></li><li><time>04:00</time></li>
+          <li><time>05:00</time></li><li><time>06:00</time></li><li><time>07:00</time></li><li><time>08:00</time></li><li><time>09:00</time></li>
+        </ol>
+        <ol class="td-tl-track" aria-label="Activities on Tue 20 Oct">
+          <li class="td-event td-event--cont-before" style="--start:0;--dur:28">
+            <button class="td-event__btn" type="button">
+              <span class="td-event__top"><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-event__title">Sleeping</span></span>
+              <span class="td-event__time"><span aria-hidden="true">↑</span><span class="td-vh">Started Mon 19 Oct, </span> 22:30 – 07:00</span>
+            </button>
+          </li>
+          <li class="td-event td-event--short" style="--start:28;--dur:3">
+            <button class="td-event__btn" type="button">
+              <span class="td-event__top"><span class="td-pat td-pat--sm td-pat--general" aria-hidden="true"></span><span class="td-event__title">Activities of Daily Living</span></span>
+              <span class="td-event__time">07:00 – 07:45</span>
+            </button>
+          </li>
+          <li class="td-event td-event--short" style="--start:31;--dur:2">
+            <button class="td-event__btn" type="button">
+              <span class="td-event__top"><span class="td-pat td-pat--sm td-pat--travel" aria-hidden="true"></span><span class="td-event__title">Travelling: cycle</span></span>
+              <span class="td-event__time">07:45 – 08:15</span>
+            </button>
+          </li>
+          <li class="td-gap" style="--start:33;--dur:7">
+            <button class="td-gap__btn" type="button">
+              <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Nothing added · 08:15 – 10:00
+            </button>
+          </li>
+          <li class="td-now" style="--at:37" aria-hidden="true"></li>
+        </ol>
+      </div>
+    </section>
+
+  </div>
+  <div style="position:sticky;bottom:16px;display:flex;justify-content:flex-end;padding-right:16px;margin-top:-72px;pointer-events:none">
+    <button class="td-fab td-fab--static" type="button" style="pointer-events:auto">
+      <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      Add activity
+    </button>
+  </div>
+</div>

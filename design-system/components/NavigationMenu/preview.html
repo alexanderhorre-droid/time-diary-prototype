@@ -1,0 +1,47 @@
+<!-- @dsCard group="Timeline screen" height=540 width=390 subtitle="Native popover from the left. Actions above the divider, places below." -->
+<div style="width:390px;max-width:100%;min-height:560px;position:relative;background:var(--overlay);padding:0">
+  <nav popover id="menu-demo" class="td-drawer" aria-labelledby="menu-title-live">
+    <div class="td-drawer__head">
+      <h2 id="menu-title-live">Menu</h2>
+      <button class="td-icon-btn" type="button" popovertarget="menu-demo" popovertargetaction="hide" aria-label="Close menu">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ul aria-label="Actions">
+      <li><a class="td-drawer__item" href="#today">Go to today</a></li>
+      <li><a class="td-drawer__item" href="#help">How to add an activity</a></li>
+    </ul>
+    <hr>
+    <ul aria-label="Pages">
+      <li><a class="td-drawer__item" href="#diary" aria-current="page">Current diary <span class="td-drawer__meta">19 Oct – 1 Nov</span></a></li>
+      <li><a class="td-drawer__item" href="#past">Past diaries <span class="td-drawer__meta">2</span></a></li>
+      <li><a class="td-drawer__item" href="#study">Study information</a></li>
+      <li><a class="td-drawer__item" href="#privacy">Data protection</a></li>
+      <li><a class="td-drawer__item" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div style="position:absolute;right:12px;top:12px">
+    <button class="td-btn td-btn--secondary td-btn--sm" type="button" popovertarget="menu-demo">Try it</button>
+  </div>
+  <nav class="td-drawer td-drawer--inline" aria-labelledby="menu-title">
+    <div class="td-drawer__head">
+      <h2 id="menu-title">Menu</h2>
+      <span class="td-icon-btn" aria-hidden="true">
+        <svg class="td-icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </span>
+    </div>
+    <ul aria-label="Actions">
+      <li><a class="td-drawer__item" href="#today">Go to today</a></li>
+      <li><a class="td-drawer__item" href="#help">How to add an activity</a></li>
+    </ul>
+    <hr>
+    <ul aria-label="Pages">
+      <li><a class="td-drawer__item" href="#diary" aria-current="page">Current diary <span class="td-drawer__meta">19 Oct – 1 Nov</span></a></li>
+      <li><a class="td-drawer__item" href="#past">Past diaries <span class="td-drawer__meta">2</span></a></li>
+      <li><a class="td-drawer__item" href="#study">Study information</a></li>
+      <li><a class="td-drawer__item" href="#privacy">Data protection</a></li>
+      <li><a class="td-drawer__item" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</div>

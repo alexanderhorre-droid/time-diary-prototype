@@ -1,0 +1,42 @@
+<!-- @dsCard group="Feedback" height=760 width=390 subtitle="Info, needs action, read-only, offline, and the toast after adding" -->
+<div style="width:390px;max-width:100%;padding:16px;display:grid;gap:16px">
+
+  <p class="td-hint">Info: something isn't available yet</p>
+  <div class="td-notice" role="status">
+    <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+    <div class="td-notice__body">
+      <p>The next diary opens in 2 days, on Sat 31 Oct.</p>
+    </div>
+  </div>
+
+  <p class="td-hint">Needs action: something to fix before saving</p>
+  <div class="td-notice td-notice--attention" role="alert">
+    <div class="td-notice__body">
+      <p class="td-notice__title">This time is full</p>
+      <p>08:00 – 08:30 already has 3 activities. Change the time or remove one first.</p>
+    </div>
+  </div>
+
+  <p class="td-hint">Read-only: a submitted diary</p>
+  <div class="td-notice td-notice--readonly" role="note">
+    <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+    <div class="td-notice__body">
+      <p><strong>Submitted on Sun 1 Nov.</strong> You can look, but not change it.</p>
+    </div>
+  </div>
+
+  <p class="td-hint">Offline: nothing is lost</p>
+  <div class="td-notice" role="status">
+    <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5.2-2.8M19 13a10 10 0 0 0-2.4-1.7M12 20h.01"/></svg>
+    <div class="td-notice__body">
+      <p>You're offline. Your diary is safe on this phone and will be sent when you're back online.</p>
+    </div>
+  </div>
+
+  <p class="td-hint">Toast: after adding, with undo</p>
+  <div class="td-toast" role="status">
+    <p class="td-toast__text">Added: Travelling: walking, 08:00 – 08:30</p>
+    <button class="td-toast__action" type="button">Undo</button>
+  </div>
+
+</div>

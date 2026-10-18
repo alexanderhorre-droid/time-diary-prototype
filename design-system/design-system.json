@@ -1,0 +1,47 @@
+{
+  "v": 3,
+  "layout": "files",
+  "assetGroups": {
+    "Other": {
+      "files": {},
+      "name": "Other",
+      "order": []
+    }
+  },
+  "blobs": {
+    "assets/IMG_7837.PNG": {
+      "blob": "ac08295a7188c2c551785b92dcdcf0bb",
+      "name": "assets/IMG_7837.PNG",
+      "sha256": "f614f3b092f3ab91337b8ccfeedf4d58ef8cc4c7f3df8878d1413b707761bdd5",
+      "size": 519251,
+      "type": "image/png"
+    },
+    "assets/IMG_7844.PNG": {
+      "blob": "d0c38c339a2fe5739a5c6f3afd05a3b2",
+      "name": "assets/IMG_7844.PNG",
+      "sha256": "377a105ddf2d1a9677c0829edae587b6deaa7f4b41bc23d1c5c38e3cf8e846fa",
+      "size": 440416,
+      "type": "image/png"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-17T11:42:47.309Z",
+    "v": 1
+  },
+  "docs": {
+    "sections": []
+  },
+  "groups": [
+    "Other"
+  ],
+  "libraries": [],
+  "namespace": "TimeDiary",
+  "sections": {},
+  "title": "Time Diary",
+  "lastChange": {
+    "by": "Alexander Horré",
+    "at": "2026-10-18T09:34:00Z",
+    "via": "Claude chat",
+    "note": "Screens complete; accessibility and data sections; rem type; cover"
+  }
+}

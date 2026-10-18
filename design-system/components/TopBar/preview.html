@@ -1,0 +1,52 @@
+<!-- @dsCard group="Timeline screen" height=470 width=390 subtitle="Phone width (390px). Tap Submit: a native popover explains why, no script." -->
+<div style="width:390px;max-width:100%;border:1px solid var(--line)">
+  <header class="td-topbar">
+    <div class="td-topbar__row">
+      <button class="td-icon-btn" type="button" popovertarget="menu" aria-label="Menu">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="td-topbar__title">
+        <h1 class="td-topbar__name">Time Diary</h1>
+      </div>
+      <button class="td-btn td-btn--secondary td-btn--sm" type="button" aria-disabled="true" popovertarget="submit-why">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        Submit
+      </button>
+    </div>
+
+    <nav class="td-daynav" aria-label="Day">
+      <a class="td-icon-btn" href="#day-2026-10-19" aria-label="Previous day, Mon 19 Oct">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </a>
+      <div class="td-daynav__label">
+        <h2 class="td-daynav__day">Tue 20 Oct</h2>
+        <p class="td-daynav__meta" style="margin:0">Day 2 of 14</p>
+      </div>
+      <a class="td-icon-btn" href="#day-2026-10-21" aria-label="Next day, Wed 21 Oct">
+        <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+    </nav>
+
+  </header>
+
+  <div popover id="submit-why" class="td-popover" role="dialog" aria-labelledby="sw-title">
+    <h2 id="sw-title">Not ready to submit yet</h2>
+    <p>You haven't added activities for 10 days yet. Submit opens when every day from Mon 19 Oct to Sun 1 Nov has activities.</p>
+    <div class="td-popover__actions">
+      <a class="td-btn td-btn--primary td-btn--sm" href="#day-2026-10-22">Go to Thu 22 Oct</a>
+      <button class="td-btn td-btn--ghost td-btn--sm" type="button" popovertarget="submit-why" popovertargetaction="hide">Close</button>
+    </div>
+  </div>
+
+  <div style="padding:16px;border-top:1px dashed var(--line)">
+    <p class="td-hint" style="margin:0">What Submit shows when pressed:</p>
+    <div class="td-popover td-popover--inline" role="note">
+      <h2>Not ready to submit yet</h2>
+      <p>You haven't added activities for 10 days yet. Submit opens when every day from Mon 19 Oct to Sun 1 Nov has activities.</p>
+      <div class="td-popover__actions">
+        <span class="td-btn td-btn--primary td-btn--sm">Go to Thu 22 Oct</span>
+        <span class="td-btn td-btn--ghost td-btn--sm">Close</span>
+      </div>
+    </div>
+  </div>
+</div>
