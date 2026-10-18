@@ -343,8 +343,10 @@
     var m = /^past-(d\d+)$/.exec(h);
     if (m) { var d = diaries.find(function (x) { return x.id === m[1]; }); if (d) return show('timeline', d); }
     if (h.indexOf('day-') === 0) {
-      if (view !== 'timeline') show('timeline', viewing || currentDiary());
-      var target = document.getElementById(h); if (target) target.scrollIntoView();
+      if (!dayEls.length && isWaiting()) return home();
+      if (view !== 'timeline' || !dayEls.length) show('timeline', viewing || currentDiary());   /* first load or a refresh on a day */
+      var k = dayEls.findIndex(function (sec) { return sec.id === h; });
+      if (k >= 0) goToDay(k); else home();
       return;
     }
     home();
