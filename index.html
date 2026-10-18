@@ -13,8 +13,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Time Diary">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="tokens.css?v=903ba0eb">
+<link rel="stylesheet" href="components.css?v=903ba0eb">
 <style>
   :root { --topbar-h: calc(121px + env(safe-area-inset-top)); }
   html { scroll-padding-top: var(--topbar-h); }
@@ -266,7 +266,7 @@
   <button class="td-toast__action" type="button" id="toast-undo">Undo</button>
 </div>
 
-<script src="app.js"></script>
+<script src="app.js?v=903ba0eb"></script>
 <script>if ('serviceWorker' in navigator && isSecureContext) addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });</script>
 </body>
 </html>

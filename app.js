@@ -304,7 +304,7 @@
     var ti = todayIndex(viewing);
     if (ti < 0) { window.scrollTo(0, 0); return; }
     var sec = dayEls[ti], head = sec.querySelector('.td-tl-day__head');
-    window.scrollTo(0, sec.offsetTop + head.offsetHeight + 7 * hourPx() - bar.offsetHeight + 8);
+    window.scrollTo(0, Math.round(sec.getBoundingClientRect().top + window.scrollY + head.offsetHeight + 7 * hourPx() + 8 - 2 * bar.offsetHeight));
   }
 
   /* ======================================================================
@@ -645,7 +645,7 @@
   $('review-back').addEventListener('click', function () { review.close(); });
   $('review-list').addEventListener('click', function (ev) {
     var a = ev.target.closest('.td-review__edit'); if (!a) return;
-    ev.preventDefault(); review.close(); document.querySelector(a.getAttribute('href')).scrollIntoView();
+    ev.preventDefault(); review.close(); var k = dayEls.findIndex(function (sec) { return '#' + sec.id === a.getAttribute('href'); }); if (k >= 0) goToDay(k);
   });
   $('review-form').addEventListener('submit', function (ev) { ev.preventDefault(); if (!sending) send(); });
 
