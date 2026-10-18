@@ -156,13 +156,13 @@ html:has(dialog[open]) { overflow: hidden; }
 .td-drawer__section { margin: var(--space-3) var(--space-4) 0; font-size: 0.75rem; line-height: 1rem; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.04em; }
 
 /* ---------- Timeline ---------- */
-.td-timeline { position: relative; padding-bottom: calc(var(--fab) + var(--space-8)); }
+.td-timeline { position: relative; z-index: 0; padding-bottom: calc(var(--fab) + var(--space-8)); }
 .td-tl-day { position: relative; }
 .td-tl-day__head { margin: 0; padding: var(--space-2) var(--space-4); background: var(--bg); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); font-size: 1rem; line-height: 1.375rem; font-weight: 700; }
 .td-tl-grid { --from: 0; position: relative; display: grid; grid-template-columns: var(--gutter-time) 1fr; padding-top: var(--space-2); }
 .td-tl-hours { list-style: none; margin: 0; padding: 0; }
 .td-tl-hours li { height: var(--hour-row); padding: 0 var(--space-2) 0 var(--space-4); font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1rem; font-weight: 500; color: var(--ink-muted); }
-.td-tl-hours time { display: block; transform: translateY(-8px); }
+.td-tl-hours time { display: block; position: relative; top: -8px; }
 .td-tl-track { position: relative; list-style: none; margin: 0 var(--space-4) 0 0; padding: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px); background-size: 100% var(--hour-row); border-inline-start: 1px solid var(--line); }
 .td-event, .td-gap { position: absolute; top: calc((var(--start) - var(--from)) * var(--quarter)); height: calc(var(--dur) * var(--quarter)); padding: 2px; }
 .td-event { --lane: 0; --lanes: 1; inset-inline-start: calc(var(--lane) * 100% / var(--lanes)); width: calc(100% / var(--lanes)); }
@@ -291,5 +291,5 @@ html:has(dialog[open]) { overflow: hidden; }
 /* The lock icon on Submit belongs to the unavailable state only */
 .td-topbar .td-btn:not([aria-disabled="true"]) > svg { display: none; }
 
-/* Pinned bars get their own layer, so a long jump between days doesn't repaint them (iOS Safari flicker) */
-.td-topbar, .td-page__head { transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+/* The timeline is its own stacking layer (z-index 0) under the pinned bar (z-index 10), and hour labels are
+   offset with top, not transform, so nothing in it can be drawn above the bar during a jump between days. */
