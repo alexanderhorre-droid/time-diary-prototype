@@ -124,9 +124,10 @@ html:has(dialog[open]) { overflow: hidden; }
 .td-daynav { display: flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-1) var(--space-2); }
 .td-daynav__label { flex: 1; min-width: 0; text-align: center; display: grid; }
 /* On the first and last day the missing arrow keeps its space, so the day stays centred */
-.td-daynav > .td-icon-btn[hidden] { display: inline-grid !important; visibility: hidden; }
+/* First and last day: the missing arrow keeps its space, and inert keeps it out of reach of taps, keyboards and screen readers */
+.td-daynav > [inert] { visibility: hidden; }
 .td-daynav__day { margin: 0; font-size: 1.125rem; line-height: 1.5rem; font-weight: 600; }
-.td-daynav__meta { font-size: 0.875rem; line-height: 1.25rem; color: var(--ink-muted); }
+.td-daynav__meta { margin: 0; font-size: 0.875rem; line-height: 1.25rem; color: var(--ink-muted); }
 /* Native popover: Submit explains itself with no script */
 .td-popover { inset: auto; position: fixed; top: calc(env(safe-area-inset-top) + 72px); left: var(--space-4); right: var(--space-4); width: auto; max-width: 480px; margin: 0 auto; padding: var(--space-4); border: 2px solid var(--ink); border-radius: var(--radius-md); background: var(--bg); color: var(--ink); box-shadow: var(--shadow-2); }
 .td-popover::backdrop { background: var(--overlay); }
@@ -207,6 +208,10 @@ html:has(dialog[open]) { overflow: hidden; }
 /* A toast shown as a manual popover sits above everything, open dialogs included */
 .td-toast[popover] { position: fixed; inset: auto max(var(--space-4), env(safe-area-inset-right)) calc(max(var(--space-4), env(safe-area-inset-bottom)) + var(--fab) + var(--space-3)) max(var(--space-4), env(safe-area-inset-left)); width: auto; max-width: 480px; margin: 0 auto; border: 0; }
 .td-toast[popover]:not(:popover-open) { display: none; }
+/* No floating button on screen (menu pages, a locked diary): the toast sits at the bottom */
+.td-fab[hidden] ~ .td-toast[popover] { bottom: max(var(--space-4), env(safe-area-inset-bottom)); }
+/* Add activity open: above its two stacked buttons */
+.td-modal[open]:has(> form > .td-modal__foot:not([hidden])) ~ .td-toast[popover] { bottom: calc(var(--space-3) + 2 * var(--tap-min) + var(--space-2) + max(var(--space-3), env(safe-area-inset-bottom)) + 1px + var(--space-3)); }
 
 /* ---------- Save status ---------- */
 .td-save { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; padding: 0 var(--space-3); border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; color: var(--ink); background: var(--bg); }
@@ -295,3 +300,9 @@ html:has(dialog[open]) { overflow: hidden; }
    which flashed the hours behind it. The timeline starts below it (--topbar-h is set from the bar's real height),
    sits on its own layer under the bar, and hour labels are offset with top, not transform. */
 .td-topbar ~ .td-timeline { padding-top: var(--topbar-h, 121px); }
+
+/* Layout helpers that used to be inline styles */
+.td-timeline__notice { margin: var(--space-3) var(--space-4); }
+.td-modal > form { display: contents; }
+.td-confirm--fill { flex: 1; align-content: center; }
+.td-btn--sm .td-icon { width: 18px; height: 18px; }

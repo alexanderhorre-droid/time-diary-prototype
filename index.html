@@ -13,8 +13,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Time Diary">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="stylesheet" href="tokens.css?v=903ba0eb">
-<link rel="stylesheet" href="components.css?v=903ba0eb">
+<link rel="stylesheet" href="tokens.css?v=255be520">
+<link rel="stylesheet" href="components.css?v=255be520">
 <style>
   :root { --topbar-h: calc(121px + env(safe-area-inset-top)); }
   html { scroll-padding-top: var(--topbar-h); }
@@ -27,28 +27,28 @@
     <div class="td-topbar__row">
       <button class="td-icon-btn" type="button" popovertarget="menu" aria-label="Menu"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <div class="td-topbar__title"><h1 class="td-topbar__name">Time Diary</h1></div>
-      <button class="td-btn td-btn--secondary td-btn--sm" type="button" id="submit-btn" aria-disabled="true" popovertarget="submit-why"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Submit</button>
+      <button class="td-btn td-btn--secondary td-btn--sm" type="button" id="submit-btn" aria-disabled="true" popovertarget="submit-why"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Submit</button>
     </div>
     <nav class="td-daynav" aria-label="Day">
       <a class="td-icon-btn" id="day-prev" href="#day-2026-10-19" aria-label="Previous day"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
       <div class="td-daynav__label">
-        <h2 class="td-daynav__day" id="day-label">Tue 20 Oct</h2>
-        <p class="td-daynav__meta" id="day-meta" style="margin:0">Day 2 of 14</p>
+        <p class="td-daynav__day" id="day-label">Tue 20 Oct</p>
+        <p class="td-daynav__meta" id="day-meta">Day 2 of 14</p>
       </div>
       <a class="td-icon-btn" id="day-next" href="#day-2026-10-21" aria-label="Next day"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
     </nav>
   </header>
 
   <main class="td-timeline" id="timeline">
-    <div class="td-notice" id="empty-note" role="status" hidden style="margin:var(--space-3) var(--space-4)">
+    <div class="td-notice td-timeline__notice" id="empty-note" role="status" hidden>
       <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
       <div class="td-notice__body"><p id="empty-text"></p></div>
     </div>
-    <div class="td-notice td-notice--readonly" id="readonly-note" role="note" hidden style="margin:var(--space-3) var(--space-4)">
+    <div class="td-notice td-notice--readonly td-timeline__notice" id="readonly-note" role="note" hidden>
       <svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
       <div class="td-notice__body"><p id="readonly-text"></p><p id="readonly-back" hidden><a href="#past">Back to past diaries</a></p></div>
     </div>
-    <div class="td-notice" id="storage-warning" role="status" hidden style="margin:var(--space-3) var(--space-4)">
+    <div class="td-notice td-timeline__notice" id="storage-warning" role="status" hidden>
       <div class="td-notice__body"><p>This browser isn't letting the app save on this phone. Activities you add will be lost when you close it.</p></div>
     </div>
     <div id="days"></div>
@@ -60,7 +60,7 @@
   <section class="td-page" id="page-waiting" aria-labelledby="pt-waiting" hidden>
     <header class="td-page__head">
       <button class="td-icon-btn" type="button" popovertarget="menu" aria-label="Menu"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <p class="td-topbar__name" style="margin:0">Time Diary</p>
+      <p class="td-topbar__name">Time Diary</p>
     </header>
     <main class="td-confirm td-waiting">
       <h1 id="pt-waiting" tabindex="-1">Your next diary starts on <span id="wait-date"></span></h1>
@@ -71,16 +71,16 @@
 
   <section class="td-page" id="page-past" aria-labelledby="pt-past" hidden>
     <header class="td-page__head"><a class="td-icon-btn" href="#timeline" aria-label="Back to your diary"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a><h1 id="pt-past" tabindex="-1">Past diaries</h1></header>
-    <div class="td-page__body">
+    <main class="td-page__body">
       <p class="td-hint" id="past-intro">Diaries you have submitted. You can look at them, but not change them.</p>
       <ul class="td-rowlinks" id="past-list"></ul>
       <p class="td-hint" id="past-empty" hidden>You haven't submitted a diary yet.</p>
-    </div>
+    </main>
   </section>
 
   <section class="td-page" id="page-help" aria-labelledby="pt-help" hidden>
     <header class="td-page__head"><a class="td-icon-btn" href="#timeline" aria-label="Back to your diary"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a><h1 id="pt-help" tabindex="-1">How to add an activity</h1></header>
-    <div class="td-page__body td-prose">
+    <main class="td-page__body td-prose">
       <ol>
         <li><strong>Tap Add activity</strong> at the bottom of the screen, or tap a “Nothing added” gap on the timeline.</li>
         <li><strong>Choose what you did.</strong> Pick it from the list. Things you chose before are at the top.</li>
@@ -90,36 +90,36 @@
       </ol>
       <p>Can't remember? Choose <strong>Forgot / Unspecified</strong>. To change or remove an activity, tap it on the timeline.</p>
       <p>When every day has activities, tap <strong>Submit</strong> at the top to check your diary and send it to the research team.</p>
-    </div>
+    </main>
   </section>
 
   <section class="td-page" id="page-study" aria-labelledby="pt-study" hidden>
     <header class="td-page__head"><a class="td-icon-btn" href="#timeline" aria-label="Back to your diary"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a><h1 id="pt-study" tabindex="-1">Study information</h1></header>
-    <div class="td-page__body td-prose">
+    <main class="td-page__body td-prose">
       <p class="td-placeholder">The research team's description of the study goes here: what it is about, who runs it, how long it lasts, and how the diaries are used.</p>
-    </div>
+    </main>
   </section>
 
   <section class="td-page" id="page-privacy" aria-labelledby="pt-privacy" hidden>
     <header class="td-page__head"><a class="td-icon-btn" href="#timeline" aria-label="Back to your diary"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a><h1 id="pt-privacy" tabindex="-1">Data protection</h1></header>
-    <div class="td-page__body td-prose">
+    <main class="td-page__body td-prose">
       <p>The activities you add are saved on this phone straight away, even without an internet connection.</p>
       <p>They stay on this phone until you submit your diary. When the research team confirms they received it, you see a thank-you screen with a reference.</p>
       <p>After that, the diary is locked: you can look at it under Past diaries, but not change it.</p>
       <p class="td-placeholder">The research team's data protection statement goes here: who is responsible for the data, how it is stored and for how long, and your rights.</p>
-    </div>
+    </main>
   </section>
 
   <section class="td-page" id="page-contact" aria-labelledby="pt-contact" hidden>
     <header class="td-page__head"><a class="td-icon-btn" href="#timeline" aria-label="Back to your diary"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a><h1 id="pt-contact" tabindex="-1">Contact</h1></header>
-    <div class="td-page__body td-prose">
+    <main class="td-page__body td-prose">
       <p>Questions about the study or the app, or using a new phone? Contact the research team.</p>
       <dl class="td-facts">
         <dt>Email</dt><dd class="td-placeholder">research team email</dd>
         <dt>Phone</dt><dd class="td-placeholder">research team phone number</dd>
         <dt>Your participant code</dt><dd class="td-placeholder">participant code</dd>
       </dl>
-    </div>
+    </main>
   </section>
 </div>
 
@@ -161,10 +161,10 @@
 </nav>
 
 <dialog class="td-modal" id="add" aria-labelledby="add-title">
-  <form id="add-form" method="post" action="#" novalidate style="display:contents">
+  <form id="add-form" method="post" action="#" novalidate>
     <div class="td-modal__head">
       <button class="td-icon-btn" type="button" id="add-back" aria-label="Back to activities" hidden><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <h2 id="add-title" tabindex="-1"><span class="td-modal__step" id="add-step">Step 1 of 2</span><span id="add-heading">Add activity</span></h2>
+      <h2 id="add-title" tabindex="-1"><span class="td-modal__step" id="add-step">Step 1 of 2</span><span class="td-vh">: </span><span id="add-heading">Add activity</span></h2>
       <span class="td-modal__count" id="add-count" hidden></span>
       <button class="td-icon-btn" type="button" id="add-close" aria-label="Close"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
@@ -200,7 +200,7 @@
         <p class="td-hint" id="days-hint">Same activity and time. Tap the days that were the same.</p>
         <div class="td-days__grid" id="f-chips"></div>
       </fieldset>
-      <div class="td-notice td-notice--attention" id="add-error" role="alert" tabindex="-1" hidden>
+      <div class="td-notice td-notice--attention" id="add-error" tabindex="-1" hidden>
         <div class="td-notice__body"><p class="td-notice__title" id="add-error-title"></p><p id="add-error-text"></p></div>
       </div>
     </div>
@@ -224,10 +224,9 @@
 </dialog>
 
 <dialog class="td-modal" id="review" aria-labelledby="review-title">
-  <form id="review-form" method="post" action="#" novalidate style="display:contents">
+  <form id="review-form" method="post" action="#" novalidate>
     <div class="td-modal__head">
       <button class="td-icon-btn" type="button" id="review-back" aria-label="Back to your diary"><svg class="td-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <span style="flex:1"></span>
     </div>
     <div class="td-modal__body td-modal__body--flush">
       <div class="td-page-head"><h1 id="review-title" tabindex="-1">Check your diary</h1><p id="review-period"></p></div>
@@ -249,24 +248,25 @@
 </dialog>
 
 <dialog class="td-modal" id="thanks" aria-labelledby="thanks-title">
-  <main class="td-confirm" style="flex:1;align-content:center">
+  <div class="td-confirm td-confirm--fill">
     <div class="td-confirm__mark" aria-hidden="true"><svg class="td-icon" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
     <h1 id="thanks-title" tabindex="-1">Thank you</h1>
     <p id="thanks-sent"></p>
     <p id="thanks-next-date"></p>
     <p class="td-confirm__receipt" id="thanks-receipt"></p>
-  </main>
+  </div>
   <footer class="td-sticky-foot">
     <button class="td-btn td-btn--primary td-btn--block" type="button" id="thanks-next">Start next diary</button>
   </footer>
 </dialog>
 
-<div popover="manual" id="toast" class="td-toast" role="status">
+<p class="td-vh" id="live" role="status"></p>
+<div popover="manual" id="toast" class="td-toast">
   <p class="td-toast__text" id="toast-text"></p>
   <button class="td-toast__action" type="button" id="toast-undo">Undo</button>
 </div>
 
-<script src="app.js?v=903ba0eb"></script>
+<script src="app.js?v=255be520"></script>
 <script>if ('serviceWorker' in navigator && isSecureContext) addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });</script>
 </body>
 </html>

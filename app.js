@@ -272,7 +272,7 @@
     var n = viewing.days;
     $('day-label').textContent = dayLabel(i); $('day-meta').textContent = 'Day ' + (i + 1) + ' of ' + n;
     var prev = $('day-prev'), next = $('day-next');
-    prev.hidden = i === 0; next.hidden = i === n - 1;
+    prev.inert = i === 0; next.inert = i === n - 1;
     if (i > 0) { prev.href = '#' + dayEls[i - 1].id; prev.setAttribute('aria-label', 'Previous day, ' + dayLabel(i - 1)); }
     if (i < n - 1) { next.href = '#' + dayEls[i + 1].id; next.setAttribute('aria-label', 'Next day, ' + dayLabel(i + 1)); }
   }
@@ -715,9 +715,9 @@
   function toast(text, undo) {
     $('toast-text').textContent = text; undoFn = undo || null; $('toast-undo').hidden = !undo;
     if (t.matches(':popover-open')) t.hidePopover();
-    var foot = $('add-foot');
-    t.style.bottom = dlg.open && !foot.hidden ? (foot.offsetHeight + 12) + 'px' : (view !== 'timeline' || readOnly() ? 'max(16px, env(safe-area-inset-bottom))' : '');
-    t.showPopover();
+    t.showPopover();   /* where it sits is CSS: above the floating button, the add screen's buttons, or the bottom edge */
+    /* Screen readers: a region that was hidden a moment ago may not be read, so announce through a live region that is always there */
+    var live = $('live'); live.textContent = ''; setTimeout(function () { live.textContent = text; }, 60);
     clearTimeout(toastTimer); toastTimer = setTimeout(hideToast, undo ? 8000 : 5000);
   }
   function hideToast() { if (t.contains(document.activeElement)) { toastTimer = setTimeout(hideToast, 2000); return; } if (t.matches(':popover-open')) t.hidePopover(); }
@@ -776,6 +776,8 @@
      Start: load from the phone, seed sample data once, restore any draft
      ====================================================================== */
   setBar(); window.addEventListener('resize', setBar);
+  /* Text size can change while the app is open (Dynamic Type): follow the bar's real height, not only window resizes */
+  if ('ResizeObserver' in window) new ResizeObserver(setBar).observe(bar);
   window.addEventListener('scroll', updateDayNav, { passive: true });
 
   function load() {
