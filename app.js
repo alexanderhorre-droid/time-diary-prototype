@@ -446,23 +446,30 @@
     choose(catalogueButton(r.parent || r.activityId), { option: r.parent ? r.activityId : null, note: r.note });
   }
 
+  /* The last day of a diary ends at midnight: an activity can't run into the next diary.
+     The participant adds the rest (the morning after a sleep, say) in the next diary. */
+  function isLastDay(day) { return day === viewing.days - 1; }
   function fillEnd(keep) {
-    var s = +fStart.value, day = +fDay.value;
+    var s = +fStart.value, day = +fDay.value, last = isLastDay(day);
     fEnd.replaceChildren();
+    $('end-hint').hidden = !last;
+    if (last) $('end-hint').textContent = dayLabel(day) + ' is the last day of this diary, so activities end by midnight. Add the rest in your next diary.';
     var g1 = document.createElement('optgroup'); g1.label = dayLabel(day);
     var g2 = document.createElement('optgroup'); g2.label = dayName(addDays(viewing.start, day + 1)) + ' (next day)';
-    for (var q = s + 1; q <= s + Q; q++) (q <= Q ? g1 : g2).append(new Option(hm(q) + (q > Q ? ' (+1 day)' : q === Q ? ' (midnight)' : ''), q));
+    var max = last ? Q : s + Q;
+    for (var q = s + 1; q <= max; q++) (q <= Q ? g1 : g2).append(new Option(hm(q) + (q > Q ? ' (+1 day)' : q === Q ? ' (midnight)' : ''), q));
     if (g1.children.length) fEnd.append(g1);
-    fEnd.append(g2);
-    fEnd.value = keep && keep > s && keep <= s + Q ? keep : s + 4;
+    if (g2.children.length) fEnd.append(g2);
+    fEnd.value = keep && keep > s && keep <= max ? keep : Math.min(s + 4, max);
     showDuration();
   }
   function showDuration() { var m = (+fEnd.value - +fStart.value) * 15, h = Math.floor(m / 60), r = m % 60; $('f-dur').textContent = (h ? h + ' h' : '') + (h && r ? ' ' : '') + (r ? r + ' min' : ''); }
   function syncChips() {
     var d = +fDay.value;
     form.querySelectorAll('input[name="days"]').forEach(function (c) {
-      var cur = +c.value === d;
-      c.closest('.td-day-chip').classList.toggle('td-day-chip--current', cur);
+      var cur = +c.value === d, chip = c.closest('.td-day-chip');
+      if (chip.classList.contains('td-day-chip--current') && !cur) c.checked = false;   /* the day moved: the old day isn't a copy */
+      chip.classList.toggle('td-day-chip--current', cur);
       if (cur) c.checked = true;
       c.setAttribute('aria-label', dayLabel(+c.value) + (cur ? ', this activity' : ''));
     });
@@ -526,10 +533,11 @@
         clearDraft(); render(); dlg.close(); toast('Changes saved: ' + updated.label + ', ' + hm(updated.start) + ' – ' + hm(updated.end));
       }, notSaved);
     }
-    var group = uid(), recs = [], skipped = [];
+    var group = uid(), recs = [], skipped = [], cut = [];
     var targets = Array.prototype.map.call(form.querySelectorAll('input[name="days"]:checked'), function (c) { return +c.value; });
     if (targets.indexOf(f.day) < 0) targets.push(f.day);
     targets.sort(function (a, b) { return a - b; }).forEach(function (d) {
+      if (d !== f.day && f.end > Q && isLastDay(d)) { cut.push(dayLabel(d)); return; }
       if (d !== f.day && fullAt(d, f.start, f.end) >= 0) { skipped.push(dayLabel(d)); return; }
       recs.push(record({ id: uid(), group: group, diaryId: viewing.id, day: d, start: f.start, end: f.end, activityId: f.activityId, parent: f.parent, label: f.label, pattern: chosen.pattern, note: f.note }));
     });
@@ -537,6 +545,7 @@
       clearDraft(); render();
       var msg = 'Added: ' + f.label + ', ' + hm(f.start) + ' – ' + hm(f.end) + (recs.length > 1 ? ', on ' + recs.length + ' days' : '');
       if (skipped.length) msg += '. Not added on ' + skipped.join(', ') + ': that time already has ' + LIMIT + ' activities.';
+      if (cut.length) msg += '. Not added on ' + cut.join(', ') + ': the last day of the diary ends at midnight.';
       var undo = function () { removeRecords(recs, 'Removed: ' + f.label); };
       if (then === 'next') {
         addedInRun++; $('add-count').textContent = addedInRun + ' added'; $('add-count').hidden = false;
