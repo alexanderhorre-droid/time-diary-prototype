@@ -276,6 +276,20 @@
     if (i > 0) { prev.href = '#' + dayEls[i - 1].id; prev.setAttribute('aria-label', 'Previous day, ' + dayLabel(i - 1)); }
     if (i < n - 1) { next.href = '#' + dayEls[i + 1].id; next.setAttribute('aria-label', 'Next day, ' + dayLabel(i + 1)); }
   }
+  /* Previous / next day: one instant scroll, no hash jump. A hash jump scrolled twice (browser, then route) and
+     repainted the sticky bar on phones; replaceState also keeps Back from stepping through every day. */
+  function goToDay(i) {
+    var sec = dayEls[i]; if (!sec) return;
+    window.scrollTo(0, Math.round(sec.getBoundingClientRect().top + window.scrollY - bar.offsetHeight));
+    try { history.replaceState(null, '', '#' + sec.id); } catch (err) {}
+    updateDayNav();
+  }
+  ['day-prev', 'day-next'].forEach(function (id, k) {
+    $(id).addEventListener('click', function (ev) {
+      if (view !== 'timeline' || !dayEls.length) return;
+      ev.preventDefault(); goToDay(dayInView() + (k ? 1 : -1));
+    });
+  });
   function hourPx() { return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hour-row')) || 64; }
   function timeInView() {
     var y = bar.getBoundingClientRect().bottom, qpx = hourPx() / 4;
