@@ -1,0 +1,82 @@
+/* Time Diary tokens — generated from tokens.json */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface-100: #f5f5f5;
+  --surface-200: #e8e8e8;
+  --surface-300: #d4d4d4;
+  --line: #d4d4d4;
+  --line-strong: #737373;
+  --ink: #111111;
+  --ink-muted: #525252;
+  --inverse-bg: #111111;
+  --inverse-ink: #ffffff;
+  --focus: #000000;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.12);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.24);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --surface-100: #171717;
+  --surface-200: #262626;
+  --surface-300: #333333;
+  --line: #333333;
+  --line-strong: #8a8a8a;
+  --ink: #f5f5f5;
+  --ink-muted: #a3a3a3;
+  --inverse-bg: #f5f5f5;
+  --inverse-ink: #0a0a0a;
+  --focus: #ffffff;
+  --overlay: rgba(0, 0, 0, 0.72);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.8);
+  }
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --surface-100: #171717;
+  --surface-200: #262626;
+  --surface-300: #333333;
+  --line: #333333;
+  --line-strong: #8a8a8a;
+  --ink: #f5f5f5;
+  --ink-muted: #a3a3a3;
+  --inverse-bg: #f5f5f5;
+  --inverse-ink: #0a0a0a;
+  --focus: #ffffff;
+  --overlay: rgba(0, 0, 0, 0.72);
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --radius-0: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --tap-min: 48px;
+  --fab: 56px;
+  --hour-row: 64px;
+  --quarter: 16px;
+  --gutter-time: 64px;
+  --swatch: 28px;
+  --content-max: 640px;
+  --z-topbar: 10;
+  --z-fab: 20;
+  --z-modal: 30;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
