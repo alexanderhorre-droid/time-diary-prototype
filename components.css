@@ -290,3 +290,6 @@ html:has(dialog[open]) { overflow: hidden; }
 
 /* The lock icon on Submit belongs to the unavailable state only */
 .td-topbar .td-btn:not([aria-disabled="true"]) > svg { display: none; }
+
+/* Pinned bars get their own layer, so a long jump between days doesn't repaint them (iOS Safari flicker) */
+.td-topbar, .td-page__head { transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
